@@ -69,7 +69,7 @@ function App() {
             <Route path="/homepage/toggling" element={<Toggling />} />
             <Route path="/homepage/apiKey" element={<ApiKeyView />} />
             <Route path="/homepage/receivingSchedule" element={<ReceivingSchedule />} />
-            <Route path="/homepage/cartonsReceived/:crsNumber" element={<CartonsReceived />} />
+            <Route path="/homepage/cartonsReceived/:rsId" element={<CartonsReceived />} />
 
 
             <Route path="/overview" element={<Storage />} />

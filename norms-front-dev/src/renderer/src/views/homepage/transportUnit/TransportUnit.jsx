@@ -121,7 +121,7 @@ function TransportUnit() {
                 {open1 ? <ArrowDropDown /> : <ArrowRight />}
               </ListItemIcon>
               <img src={agv1} alt="#" className='menuMargin' />
-              <ListItemText primary="AGV" />
+              <ListItemText primary="AGV"/>
             </ListItemButton>
             {menuSolid()}
 

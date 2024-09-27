@@ -64,7 +64,7 @@ const styleFeature = {
 
 
 function CartonsReceived() {
-  const [crsNumber, setCrsNumber] = useState(parseInt(useParams().crsNumber));
+  const [rsId, setRsId] = useState(parseInt(useParams().rsId));
   const [status, setStatus] = useState(false);
   const [open, setOpen] = useState(false);
   const [actionOpen, setActionOpen] = useState(false);
@@ -102,14 +102,15 @@ function CartonsReceived() {
   const [irtMember2, setIrtMember2] = useState('');
   const today = new Date();
 
+  console.log(rsId);
 
   useEffect(() => {
-    getCartonsReceivedData(crsNumber);
+    getCartonsReceivedData(rsId);
   }, []);
 
 
-  function getCartonsReceivedData(crsNumber) {
-    axios.post('/api/getCartonsReceivedData', { crsNumber: crsNumber }).then(res => {
+  function getCartonsReceivedData(rsId) {
+    axios.post('/api/getCartonsReceivedData', { rsId: rsId }).then(res => {
       let data = res.data.data;
       setCartonsReceivedDatas(data);
     })
@@ -120,7 +121,7 @@ function CartonsReceived() {
   //   try {
   //     const response = await axios.post('/api/saveReceivingScheduleData', newDates);
   //     if (response.status === 200) {
-  //       getCartonsReceivedData(crsNumber);
+  //       getCartonsReceivedData(rsId);
   //     }
   //   } catch (error) {
   //     console.error('Error saving data', error);
@@ -156,7 +157,7 @@ function CartonsReceived() {
       const response = await axios.post('/api/receivingScheduleAddTuNamber', { id, newTuNumber, labelPrinter, irtMember1, irtMember2 });
       if (response.status === 200) {
         handleActionClose();
-        getCartonsReceivedData(crsNumber);
+        getCartonsReceivedData(rsId);
       }
     } catch (error) {
       console.error('Error adding TU number.', error);
@@ -166,8 +167,7 @@ function CartonsReceived() {
 
   const handleAddNewData = async () => {
     let newData = {
-      'crsNumber': crsNumber,
-      'action': 'Completed',
+      'rsId': rsId,
       'createdBy': 'NORMS',
       'barcode': binNumber,
       'minWeight': minWeight,
@@ -183,7 +183,7 @@ function CartonsReceived() {
       const response = await axios.post('/api/receivingScheduleAddNewData', newData);
       if (response.status === 200) {
         handleActionClose();
-        getCartonsReceivedData(crsNumber);
+        getCartonsReceivedData(rsId);
       }
     } catch (error) {
       console.error('Error adding New Data.', error);
@@ -252,7 +252,7 @@ function CartonsReceived() {
 
   // const handleInputBlur = () => {
   //   const newData = {
-  // 'crsNumber': crsNumber,
+  // 'rsId': rsId,
   // 'action': 'Completed',
   // 'createdBy': 'NORMS',
   // 'lastUpdatedDate': newRecord.lastUpdatedDate,
@@ -289,7 +289,7 @@ function CartonsReceived() {
   //     if (response.status === 200) {
   //       console.log('Coordinates updated successfully', response.data);
   //       handleToSKUClose();
-  //       getCartonsReceivedData(crsNumber);
+  //       getCartonsReceivedData(rsId);
   //     }
   //   } catch (error) {
   //     console.error('Error updating coordinates', error);
@@ -421,7 +421,7 @@ function CartonsReceived() {
                           <span style={{ fontSize: '12px', fontWeight: 'bold' }}>{item.tuNumber}</span><br />
                           <button
                             className={`receivingSchedule-button ` + (status ? 'colorBlue' : 'rs-activated-state')}
-                            onClick={status ? () => handleActionOpen(item.barcode, "Re-print Label", item.id, item.tuNumber, '') : () => { }}>
+                            onClick={status ? () => handleActionOpen(item.barcode, "Re-print Label", item.id, item.tuNumber) : () => { }}>
                             Re-print Label
                           </button>
                         </>
