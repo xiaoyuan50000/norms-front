@@ -1,0 +1,39 @@
+.leaflet-container{
+  background-color: #fff !important;
+}
+
+.thumb-number-label {
+  position: absolute;
+  height: 120px;
+  top: -10px;
+  left: -25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #163F8F;
+  font-weight: bolder;
+}
+
+svg line {
+  pointer-events: none;
+}
+
+.leaflet-pane>svg {
+  cursor: auto;
+}
+
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane>svg path,
+.leaflet-tile-container {
+  pointer-events: auto !important;
+}
+
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane>svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
+  pointer-events: visiblePainted;
+  pointer-events: auto;
+}

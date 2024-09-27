@@ -1,0 +1,30 @@
+.card .card-header {
+    background-color: #fff !important;
+    border-top-left-radius: .375rem;
+    border-top-right-radius: .375rem;
+  }
+
+  .card .card-header .card-header-title {
+    border-top-right-radius: .385rem;
+    border-bottom-right-radius: .385rem;
+    padding: .25rem 0 .25rem .825rem;
+    border-left: 2px solid;
+    color: #474A7C;
+    font-weight: 600;
+  }
+
+  .form-control {
+    background: #e9ecef !important;
+    border: none !important;
+  }
+
+  .input-group-text {
+    border: 0 !important;
+    color: #B0904E !important;
+  }
+
+  .card-date {
+    max-width: 14rem;
+    float: right;
+    padding-top: 1rem;
+  }

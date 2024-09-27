@@ -1,0 +1,64 @@
+.scd-container table {
+  width: 100%;
+  border-bottom: 1px solid #EBECF1;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  margin-bottom: 18px;
+  margin-top: -20px;
+  padding: 0px 15px;
+}
+
+/* th {
+  font-weight: bold;
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid #EBECF1;
+  border-bottom: 1px solid #EBECF1;
+}
+
+td {
+  font-size: 10.5px;
+  padding: 5px;
+} */
+
+.scd-container>table>thead>tr>th {
+  font-weight: bold;
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid #EBECF1;
+  border-bottom: 1px solid #EBECF1;
+}
+
+.scd-container>table>tbody>tr>td {
+  /* font-size: 10.5px; */
+  padding:3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.BatchActivated {
+  color: red;
+  background: #FFDEDE;
+  padding: 0;
+  border: 1px solid;
+  text-align: center;
+}
+
+.BatchReady {
+  color: #084F6A;
+  background: #FFE699;
+  padding: 0;
+  text-align: center;
+  border: 1px solid;
+}
+
+.BatchCompleted {
+  color: #00B050;
+  background: #E3FFD9;
+  border: 1px solid;
+  text-align: center;
+  padding: 0;
+}

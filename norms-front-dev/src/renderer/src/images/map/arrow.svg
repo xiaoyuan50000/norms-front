@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46">
+  <g id="arrow" transform="translate(-1202 -560)">
+    <g id="a" transform="translate(-10501 14021)">
+      <rect id="a-2" data-name="a" width="46" height="46" rx="5" transform="translate(11703 -13461)" fill="#020951"/>
+    </g>
+    <g id="a-3" data-name="a" transform="translate(1252.947 596.178) rotate(180)">
+      <path id="a-4" data-name="a" d="M1160.277,11.584,1143.322.42c-.706-.467-.962-.235-.566.514l2.823,10.287a3.23,3.23,0,0,1-.014,2.718l-2.8,10.007c-.406.747-.154.974.552.509l16.955-11.164a.944.944,0,0,0,0-1.707Z" transform="translate(-1115.207 0)" fill="#d3f7ff"/>
+      <path id="a-5" data-name="a" d="M-20,431.594m.35,0H4.518q.35,0,.35.514v2.817q0,.514-.35.514H-19.65q-.35,0-.35-.514v-2.817Q-20,431.594-19.65,431.594Z" transform="translate(30.284 -421.084)" fill="#d3f7ff"/>
+    </g>
+  </g>
+</svg>

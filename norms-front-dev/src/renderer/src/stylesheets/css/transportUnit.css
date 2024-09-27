@@ -1,0 +1,16 @@
+table>thead>tr>th {
+  line-height: 1.5 !important;
+}
+
+.tu-div .card {
+  margin-top: 14px;
+}
+
+.tu-div .card form .inputCss {
+  width: 200px;
+}
+
+.tu-div .card form .buttonCss {
+  width: 133px;
+  height: 55px;
+}

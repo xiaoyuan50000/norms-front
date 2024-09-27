@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="86" height="47" viewBox="0 0 86 47">
+  <defs>
+    <filter id="a" x="0" y="0" width="86" height="47" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="green" transform="translate(9.076 6)">
+    <g transform="matrix(1, 0, 0, 1, -9.08, -6)" filter="url(#a)">
+      <g id="a-2" data-name="a" transform="translate(9 6)" fill="#dbffeb" stroke="#00b050" stroke-width="2">
+        <rect width="68" height="29" rx="14.5" stroke="none"/>
+        <rect x="1" y="1" width="66" height="27" rx="13.5" fill="none"/>
+      </g>
+    </g>
+    <path id="a-3" data-name="a" d="M11.5,0A11.5,11.5,0,1,1,0,11.5,11.5,11.5,0,0,1,11.5,0Z" transform="translate(41.924 3)" fill="#00b050"/>
+  </g>
+</svg>

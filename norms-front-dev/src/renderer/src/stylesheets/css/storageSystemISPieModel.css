@@ -1,0 +1,45 @@
+.left-pie-bottom {
+  width: 302px;
+  display: flex;
+  margin-top: -15px;
+  justify-content: space-between;
+}
+
+.number-with-spacing-left,
+.number-with-spacing-right {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.status-line {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.right-instance {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-left: 10px;
+  width: 34%;
+}
+
+.right-instance-text,
+.right-instance-number {
+  font-weight: bold;
+  font-size: 11px;
+  color: #787878;
+}
+
+.right-instance-number {
+  margin-right: 0;
+  margin-left: auto;
+}
