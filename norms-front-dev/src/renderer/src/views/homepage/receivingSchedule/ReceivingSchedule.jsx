@@ -223,6 +223,18 @@ function ReceivingSchedule() {
     }
   };
 
+  const getColor = (addStatus) => {
+    return addStatus ? '#FFFFFF' : '#E5E5E5'
+  }
+
+  const getButtonColor = (status) => {
+    return status ? '#00AF50' : '#A3A3A3'
+  }
+
+  const getStatus = (status)=>{
+    return status ? 'pointer' : 'auto'
+  }
+
   return (
     <div className='outer-div'>
       <div className="issuingSchedule-container-div">
@@ -313,7 +325,7 @@ function ReceivingSchedule() {
                       <TableCell align="center">
                         <span
                           style={{
-                            cursor: status ? 'pointer' : 'auto',
+                            cursor: getStatus(status),
                             color: 'black'
                           }}
                           onClick={status ? () => handleUnfold(item.rsId) : () => { }}>
@@ -335,7 +347,7 @@ function ReceivingSchedule() {
                       </TableCell>
                       <TableCell align="center">
                         <span className='countCrsNumber-span'
-                          style={{ cursor: status ? 'pointer' : 'auto' }}
+                          style={{ cursor: getStatus(status) }}
                           onClick={status ? () => handleUnfoldDetails(item.rsId) : () => { }}
                         >
                           {item.count}
@@ -346,7 +358,7 @@ function ReceivingSchedule() {
                           style={{
                             borderRadius: '4px',
                             color: '#FFFFFF',
-                            background: status ? '#00AF50' : '#A3A3A3',
+                            background: getButtonColor(status),
                             lineHeight: '25px',
                             fontSize: '13px',
                             width: '100px',
@@ -357,7 +369,7 @@ function ReceivingSchedule() {
                         </button>
                       </TableCell>
                       <TableCell align="center">{item.createdBy}</TableCell>
-                      <TableCell align="center">{moment(item.lastUpdatedDate).format('DD-MM-YYYY HH:mm:ss')}</TableCell>
+                      <TableCell align="center">{moment(item.lastUpdatedDate).utcOffset(0).format('DD-MM-YYYY HH:mm:ss')}</TableCell>
                       <TableCell></TableCell>
                     </TableRow>
 
@@ -384,7 +396,7 @@ function ReceivingSchedule() {
                               </TableRow>
                             </TableHead>
 
-                            <TableBody sx={{ 'td': { backgroundColor: addStatus ? '#FFFFFF' : '#E5E5E5', fontSize: '13px !important', color: 'black' } }}>
+                            <TableBody sx={{ 'td': { backgroundColor: getColor(addStatus), fontSize: '13px !important', color: 'black' } }}>
                               {detailedData && (
                                 detailedData.map(item => (
                                   <TableRow key={item.id}>
@@ -394,7 +406,7 @@ function ReceivingSchedule() {
                                     <TableCell align="center">{item.minWeight}</TableCell>
                                     <TableCell align="center">{item.maxWeight}</TableCell>
                                     <TableCell align="center">{item.createdBy}</TableCell>
-                                    <TableCell align="center">{moment(item.lastUpdatedDate).format('DD-MM-YYYY HH:mm:ss')}</TableCell>
+                                    <TableCell align="center">{moment(item.lastUpdatedDate).utcOffset(0).format('DD-MM-YYYY HH:mm:ss')}</TableCell>
                                     <TableCell align="center">
                                       {addStatus && (
                                         <img src={dustbin} alt="dustbin" style={{ width: '17px', height: '17px' }} onClick={() => deleteDetailData(item.id)} />

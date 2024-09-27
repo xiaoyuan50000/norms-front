@@ -211,6 +211,31 @@ function CartonsReceived() {
     setNewNumber(generateAndSetNewTuNumber());
   };
 
+  const printLabelButton = (item) => {
+    return (
+      <>
+        <button
+          className={`receivingSchedule-button ${status ? 'colorBlue' : 'rs-activated-state'}`}
+          style={{ width: '85px' }}
+          onClick={status ? () => handleActionOpen(item.barcode, "Print Label", item.id, '') : () => { }}>
+          Print Label
+        </button>
+      </>
+    )
+  }
+
+
+  const storeButton = () => {
+    return (
+      <button
+        className={`receivingSchedule-button ${status ? 'colorBlue2' : 'rs-activated-state'}`}
+        style={{ width: '85px' }}
+      // onClick={status ? () => handleToSKUOpen(item.tuNumber) : () => { }}
+      >
+        Stored
+      </button>
+    )
+  }
 
   const regexOnlyNumbers = /^[0-9]+$/;
   const regexNumbersWithDecimal = /^[0-9][0-9]*(\.[0-9]*)?$/;
@@ -437,23 +462,12 @@ function CartonsReceived() {
                     </TableCell>
                     <TableCell align="center">
                       {!item.tuNumber ? (
-                        <button
-                          className={`receivingSchedule-button ${status ? 'colorBlue' : 'rs-activated-state'}`}
-                          style={{ width: '85px' }}
-                          onClick={status ? () => handleActionOpen(item.barcode, "Print Label", item.id, '') : () => { }}>
-                          Print Label
-                        </button>
+                        printLabelButton(item)
                       ) : (
-                        <button
-                          className={`receivingSchedule-button ${status ? 'colorBlue2' : 'rs-activated-state'}`}
-                          style={{ width: '85px' }}
-                        // onClick={status ? () => handleToSKUOpen(item.tuNumber) : () => { }}
-                        >
-                          Stored
-                        </button>
+                        storeButton()
                       )}
                     </TableCell>
-                    <TableCell align="center">{moment(item.lastUpdatedDate).format('DD-MM-YYYY HH:mm:ss')}</TableCell>
+                    <TableCell align="center">{moment(item.lastUpdatedDate).utcOffset(0).format('DD-MM-YYYY HH:mm:ss')}</TableCell>
                     <TableCell></TableCell>
                   </TableRow>
                 ))}
