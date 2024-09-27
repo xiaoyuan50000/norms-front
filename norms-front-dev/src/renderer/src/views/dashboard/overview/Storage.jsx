@@ -134,7 +134,7 @@ function Storage() {
     ['1234569', 'G', 'NPM1', 'SKU3', '20/May/2024 13:51']
   ];
 
-  if (Array.isArray(issuingStatus) && issuingStatus.length > 0) {
+  // if (Array.isArray(issuingStatus) && issuingStatus.length > 0) {
     const isBgColors = [
       '#3B92B9',
       '#46B1C0',
@@ -152,10 +152,10 @@ function Storage() {
         bgColor: isBgColors[colorIndex],
       };
     });
-  }
+  // }
 
 
-  if (Array.isArray(receivingStatus) && receivingStatus.length > 0) {
+  // if (Array.isArray(receivingStatus) && receivingStatus.length > 0) {
     const rsBgColors = [
       '#F76816',
       '#F7A416',
@@ -173,10 +173,10 @@ function Storage() {
         bgColor: rsBgColors[colorIndex],
       };
     });
-  }
+  // }
 
 
-  if (Array.isArray(noteProcessingStatus) && noteProcessingStatus.length > 0) {
+  // if (Array.isArray(noteProcessingStatus) && noteProcessingStatus.length > 0) {
     const npsColors = ['#6D6D6D', '#EB3A24', '#FFB021', '#18A79F'];
     const getStatusImg = (status) => {
       if (status === 'No Batch ready!') {
@@ -202,11 +202,11 @@ function Storage() {
         imgs
       };
     });
-  }
+  // }
 
 
-  if (Array.isArray(subsystemStatus) && subsystemStatus.length > 0) {
-    const getStatusImg = (status) => {
+  // if (Array.isArray(subsystemStatus) && subsystemStatus.length > 0) {
+    const getStatusImg2 = (status) => {
       if (status === 'Shifting') {
         return Shifting;
       } else if (status === 'Transporting') {
@@ -227,18 +227,18 @@ function Storage() {
     };
 
     subsystemStatusData = subsystemStatus.map(item => {
-      const imageSrc = getStatusImg(item.operation);
+      const imageSrc = getStatusImg2(item.operation);
 
       return {
         ...item,
         imageSrc
       };
     })
-  }
+  // }
 
 
-  if (Array.isArray(bulkLaneStatus) && bulkLaneStatus.length > 0) {
-    const getStatusImg = (status) => {
+  // if (Array.isArray(bulkLaneStatus) && bulkLaneStatus.length > 0) {
+    const getStatusImg3 = (status) => {
       if (status === 'Issuing') {
         return Issuing;
       } else if (status === 'Receiving') {
@@ -261,7 +261,7 @@ function Storage() {
     }
 
     bulkLaneStatusData = bulkLaneStatus.map(item => {
-      const imageSrc = getStatusImg(item.name);
+      const imageSrc = getStatusImg3(item.name);
       const currentState = getCurrentState(item.name);
 
       return {
@@ -270,7 +270,7 @@ function Storage() {
         currentState
       };
     })
-  }
+  // }
 
   const handleOpenDialog = (data) => {
     setIsDialogOpen(true);
@@ -334,13 +334,13 @@ function Storage() {
                   </div>
                   <Grid>
                     <div className='ldt-Statistics'>
-                      {issuingStatusData && issuingStatusData.length > 0 ?
+                      {issuingStatusData.length > 0 ?
                         <div className="left-instance">
                           {issuingStatusData.map((i, index) => (
                             i.name != '' ? <IsStatus key={index} onAddTask={handleOpenDialog} text={i.name} number={i.num} bgColor={i.bgColor} details={i.details} /> : null))}
                         </div>
                         : null}
-                      {receivingStatusData && receivingStatusData.length > 0 ?
+                      {receivingStatusData.length > 0 ?
                         <div className="right-instance">
                           {receivingStatusData.map((r, index) => (
                             r.name != '' ? <IsStatus key={index} onAddTask={handleOpenDialog} text={r.name} number={r.num} bgColor={r.bgColor} details={r.details} /> : null))}
@@ -356,7 +356,7 @@ function Storage() {
                   <div className='title-textStyle'>
                     Note Processing Status
                   </div>
-                  {noteProcessingStatusData && noteProcessingStatusData.length > 0 ?
+                  {noteProcessingStatusData.length > 0 ?
                     <div className='nps-bottom'>
                       {noteProcessingStatusData.map((n, index) => (
                         n.name != '' ? < LinearProgressWithLabel onAddTask={handleOpenDialog} key={index} text={n.text} headline={n.name} value={n.num} state={n.status} color={n.color} imgs={n.imgs} details={n.details} /> : null))
@@ -374,7 +374,7 @@ function Storage() {
                     </div>
                     <div className='bls-bottom'>
 
-                      {bulkLaneStatusData && bulkLaneStatusData.length > 0 ?
+                      {bulkLaneStatusData.length > 0 ?
                         bulkLaneStatusData.map((b, index) => (
                           <Fragment key={index}>
                             <div className='bls-bottom-div' onClick={() => handleOpenDialog({ title: `Bulk Lane ${b.name} Schedules`, tableHeaders: blrsTableHeaders, data: blrsDatas })}>
@@ -431,7 +431,7 @@ function Storage() {
                     </div>
                   </div>
                   <Grid container spacing={1} minHeight={'415px'}>
-                    {subsystemStatusData && subsystemStatusData.length > 0 ?
+                    {subsystemStatusData.length > 0 ?
                       <div className='subsystem-status-bottom'>
                         {subsystemStatusData.map((s, index) => (
                           s.name === '' ?
@@ -480,7 +480,7 @@ function Storage() {
                   </div>
                   <Grid>
                     <div className='scs-bottom'>
-                      {storageCapacityStatus && storageCapacityStatus.length > 0 ?
+                      {storageCapacityStatus.length > 0 ?
                         <StorageBarModel onAddTask={handleOpenDialog} data={storageCapacityStatus} scsTableHeaders={scsTableHeaders} scsDatas={scsDatas} />
                         : null}
                     </div>
@@ -502,7 +502,7 @@ function Storage() {
                 </div>
               </div>
               <div className="container-right-bottom" style={{ height: height }}>
-                {transportErrors && transportErrors.length > 0 ?
+                {transportErrors.length > 0 ?
                   transportErrors.map((module, index) => (
                     <TransportErrors
                       key={index}

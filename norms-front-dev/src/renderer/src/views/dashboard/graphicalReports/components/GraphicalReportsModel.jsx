@@ -20,7 +20,7 @@ const GraphicalReportsModel = ({ chartData, grepChartRef, currReportType }) => {
         // console.log('event', event)
         // console.log('event.selected[event.name];', event.selected[event.name])
         const name = event.name;
-        var isSelected = event.selected[event.name];
+        let isSelected = event.selected[event.name];
         if (!isSelected) {
           myChart.dispatchAction({
             type: 'legendSelect',//legendSelect
@@ -158,8 +158,8 @@ const GraphicalReportsModel = ({ chartData, grepChartRef, currReportType }) => {
         tooltip: {
           className: 'mychart-tooltip',
           position: function (point) {
-            var barX = point[0] - 110;
-            var y = point[1] - 100;
+            let barX = point[0] - 110;
+            let y = point[1] - 100;
             return [barX, y];
           },
           backgroundColor: 'transparent',

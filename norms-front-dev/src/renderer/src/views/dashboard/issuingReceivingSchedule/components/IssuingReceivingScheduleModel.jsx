@@ -23,8 +23,8 @@ const IssuingReceivingScheduleModel = () => {
                 tooltip: {
                     className: 'mychart-tooltip',
                     position: function (point) {  
-                      var barX = point[0] - 110;
-                      var y = point[1] - 100;  
+                      let barX = point[0] - 110;
+                      let y = point[1] - 100;  
                       return [barX, y]; 
                     },
                     backgroundColor: 'transparent',

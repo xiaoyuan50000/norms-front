@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef,useImperativeHandle } from 'react';
+import { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 
@@ -100,7 +100,7 @@ const StyledWarningPop = styled(Popup)`
     }
 `;
 
-function SVGMapLayer({ svgLayerRef,agvOnline }) {
+function SVGMapLayer({ svgLayerRef, agvOnline }) {
 
     const [popupInfo, setPopupInfo] = useState({ position: null, html: "", error: 0 });
     // const currentPointArr = useRef([]);
@@ -156,19 +156,23 @@ function SVGMapLayer({ svgLayerRef,agvOnline }) {
 
         return () => {
             ids.forEach((val) => {
-                const element = document.getElementById(val[0]);
-                if (element) {
-                  element.removeEventListener('click', (e) => handleSvgClick(e, val));
-                }
+                removeEvent(val)
             })
         }
 
     }, [])
 
+    const removeEvent = function (val) {
+        const element = document.getElementById(val[0]);
+        if (element) {
+            element.removeEventListener('click', (e) => handleSvgClick(e, val));
+        }
+    }
+
     const handleSvgClick = (e, val) => {
         const fill = document.getElementById(val[0]).getAttribute("fill")
         console.log(fill);
-        
+
         const name = val[1]
         const clickPosition = currentPoint.current
 
@@ -219,8 +223,8 @@ function SVGMapLayer({ svgLayerRef,agvOnline }) {
     //     })
     // }
 
-    function stopAndStartGood(name,type){
-        goodsRef.current.stopAndStartGood(name,type);
+    function stopAndStartGood(name, type) {
+        goodsRef.current.stopAndStartGood(name, type);
     }
 
     useImperativeHandle(svgLayerRef, () => {
@@ -250,7 +254,7 @@ function SVGMapLayer({ svgLayerRef,agvOnline }) {
                 </>
             )}
 
-            <Goods goodsRef={goodsRef}/>
+            <Goods goodsRef={goodsRef} />
             {/* <MoveMark line={line1} online={robot.robot1Online} name="AGV 1" />
             <MoveMark line={line2} online={robot.robot2Online} name="AGV 2" />
             <MoveMark line={line3} online={robot.robot3Online} name="AGV 3" />

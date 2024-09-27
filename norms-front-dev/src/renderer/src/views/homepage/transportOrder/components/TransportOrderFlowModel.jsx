@@ -33,9 +33,13 @@ function TransportOrderFlowModel({ data, flowId, toId }) {
     setAlertInfoList(prev => [...prev, newAlert]);
 
     setTimeout(() => {
-      setAlertInfoList(prev => prev.filter(alert => alert.id !== newAlert.id));
+      setAlertInfoList(prev => { return addErrorAlertSetTimeOut(prev, newAlert) });
     }, 3000);
   };
+
+  const addErrorAlertSetTimeOut = (prev, newAlert) => {
+    return prev.filter(alert => alert.id !== newAlert.id)
+  }
 
   const saveDiagramData = async () => {
     try {
@@ -67,6 +71,15 @@ function TransportOrderFlowModel({ data, flowId, toId }) {
     }
   };
 
+  const validateKey = function (nodeNameSet, key) {
+    return !key || typeof key !== 'string' || nodeNameSet.has(key)
+  }
+  const validateLink = function (from, to, nodeNameSet, nodeAsFromSet, nodeAsToSet) {
+    return !from || !to
+      || !nodeNameSet.has(from) || !nodeNameSet.has(to)
+      || nodeAsFromSet.has(from) || nodeAsToSet.has(to)
+  }
+
   // stipulate.
   function validateGraphData(datas) {
     let datasObject = JSON.parse(datas);
@@ -81,10 +94,7 @@ function TransportOrderFlowModel({ data, flowId, toId }) {
 
     for (const node of datasObject.nodeDataArray) {
       const { key } = node;
-      if (!key || typeof key !== 'string') {
-        return false;
-      }
-      if (nodeNameSet.has(key)) {
+      if (validateKey(nodeNameSet, key)) {
         return false;
       }
       nodeNameSet.add(key);
@@ -100,15 +110,7 @@ function TransportOrderFlowModel({ data, flowId, toId }) {
 
     for (const link of datasObject.linkDataArray) {
       const { from, to } = link;
-      if (!from || !to) {
-        return false;
-      }
-
-      if (!nodeNameSet.has(from) || !nodeNameSet.has(to)) {
-        return false;
-      }
-
-      if (nodeAsFromSet.has(from) || nodeAsToSet.has(to)) {
+      if (validateLink(from, to, nodeNameSet, nodeAsFromSet, nodeAsToSet)) {
         return false;
       }
 

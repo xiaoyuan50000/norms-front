@@ -3,6 +3,18 @@ import * as echarts from 'echarts';
 
 function DrawNpmModel({ data }) {
   const chartRef = useRef(null);
+
+
+  const setSummarizedData = function(statuses, data, summarizedData, price){
+    statuses.forEach(status => {
+      data.forEach(item => {
+        if (item.product === price && item.npmStatus === status) {
+          summarizedData[price][status] = item.amount_sum;
+        }
+      });
+    });
+  }
+
   useEffect(() => {
     if (chartRef.current) {
       let myChart = echarts.init(chartRef.current);
@@ -12,13 +24,14 @@ function DrawNpmModel({ data }) {
       const summarizedData = {}
       prices.forEach(price => {
         summarizedData[price] = {};
-        statuses.forEach(status => {
-          data.forEach(item => {
-            if (item.product === price && item.npmStatus === status) {
-              summarizedData[price][status] = item.amount_sum;
-            }
-          });
-        });
+        // statuses.forEach(status => {
+        //   data.forEach(item => {
+        //     if (item.product === price && item.npmStatus === status) {
+        //       summarizedData[price][status] = item.amount_sum;
+        //     }
+        //   });
+        // });
+        setSummarizedData(statuses, data, summarizedData, price)
       });
 
       const x_name = Object.keys(summarizedData).reverse();
